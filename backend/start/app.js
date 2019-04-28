@@ -1,4 +1,4 @@
-"use strict";
+'use strict'
 
 /*
 |--------------------------------------------------------------------------
@@ -11,16 +11,17 @@
 |
 */
 const providers = [
-  "@adonisjs/framework/providers/AppProvider",
-  "@adonisjs/auth/providers/AuthProvider",
-  "@adonisjs/bodyparser/providers/BodyParserProvider",
-  "@adonisjs/cors/providers/CorsProvider",
-  "@adonisjs/lucid/providers/LucidProvider",
-  "@adonisjs/lucid-slugify/providers/SlugifyProvider",
-  "adonis-kue/providers/KueProvider",
-  "@adonisjs/redis/providers/RedisProvider",
-  "@adonisjs/mail/providers/MailProvider"
-];
+  '@adonisjs/framework/providers/AppProvider',
+  '@adonisjs/auth/providers/AuthProvider',
+  '@adonisjs/bodyparser/providers/BodyParserProvider',
+  '@adonisjs/cors/providers/CorsProvider',
+  '@adonisjs/lucid/providers/LucidProvider',
+  '@adonisjs/lucid-slugify/providers/SlugifyProvider',
+  'adonis-kue/providers/KueProvider',
+  '@adonisjs/redis/providers/RedisProvider',
+  '@adonisjs/mail/providers/MailProvider',
+  '@adonisjs/framework/providers/ViewProvider'
+]
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,9 @@ const providers = [
 |
 */
 const aceProviders = [
-  "@adonisjs/lucid/providers/MigrationsProvider",
-  "adonis-kue/providers/CommandsProvider"
-];
+  '@adonisjs/lucid/providers/MigrationsProvider',
+  'adonis-kue/providers/CommandsProvider'
+]
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,7 @@ const aceProviders = [
 |   { Route: 'Adonis/Src/Route' }
 |
 */
-const aliases = {};
+const aliases = {}
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +59,7 @@ const aliases = {};
 | Here you store ace commands for your package
 |
 */
-const commands = [];
+const commands = []
 /*
 |--------------------------------------------------------------------------
 | JOBS
@@ -67,6 +68,6 @@ const commands = [];
 | Exec Job
 |
 */
-const jobs = ["App/Jobs/InvitationEmail"];
+const jobs = ['App/Jobs/InvitationEmail']
 
-module.exports = { providers, aceProviders, aliases, commands, jobs };
+module.exports = { providers, aceProviders, aliases, commands, jobs }
