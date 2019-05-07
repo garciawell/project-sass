@@ -50,7 +50,7 @@ class ProjectController {
    */
   async show ({ params, request }) {
     const project = await request.team
-      .project()
+      .projects()
       .where('id', params.id)
       .first()
 
@@ -68,7 +68,7 @@ class ProjectController {
   async update ({ params, request }) {
     const data = request.only(['title'])
     const project = await request.team
-      .project()
+      .projects()
       .where('id', params.id)
       .first()
 
@@ -89,7 +89,7 @@ class ProjectController {
    */
   async destroy ({ params, request }) {
     const project = await request.team
-      .project()
+      .projects()
       .where('id', params.id)
       .first()
 
