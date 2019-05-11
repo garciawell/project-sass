@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Container } from './styles';
-import { Creators as PlaylistActions } from '../../store/ducks/playlists';
+import { Creators as PlaylistActions } from '~/store/ducks/playlists';
 
 class Example extends Component {
   state = {};
