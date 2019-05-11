@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-
 import './config/reactotron';
 import { Provider } from 'react-redux';
 import GlobalStyle from './styles/global';
