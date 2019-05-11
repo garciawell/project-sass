@@ -1,11 +1,17 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Example from '../pages/Example';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import Main from '~/pages/Main';
+import SignUp from '~/pages/Auth/SignUp';
+import SignIn from '~/pages/Auth/SignIn';
 
 const Routes = () => (
-  <Switch>
-    <Route exact path="/" component={Example} />
-  </Switch>
+  <BrowserRouter>
+    <Switch>
+      <Route path="/signin" component={SignIn} />
+      <Route path="/signup" component={SignUp} />
+      <Route exact path="/" component={Main} />
+    </Switch>
+  </BrowserRouter>
 );
 
 export default Routes;

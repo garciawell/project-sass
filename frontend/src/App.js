@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 
 import './config/reactotron';
 import { Provider } from 'react-redux';
@@ -12,14 +11,12 @@ import store from './store';
 
 const App = () => (
   <Provider store={store}>
-    <BrowserRouter>
-      <Fragment>
-        <Wrapper>
-          <Routes />
-        </Wrapper>
-        <GlobalStyle />
-      </Fragment>
-    </BrowserRouter>
+    <Fragment>
+      <Wrapper>
+        <Routes />
+      </Wrapper>
+      <GlobalStyle />
+    </Fragment>
   </Provider>
 );
 export default App;
