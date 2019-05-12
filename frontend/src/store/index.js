@@ -11,8 +11,7 @@ const sagaMonitor = process.env.NODE_ENV === 'development' ? console.tron.create
 
 const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
-middlewares.push(sagaMiddleware);
-middlewares.push(routerMiddleware(history));
+middlewares.push(sagaMiddleware, routerMiddleware(history));
 
 const tronMiddleware = process.env.NODE_ENV === 'development' ? console.tron.createEnhancer : () => {};
 
