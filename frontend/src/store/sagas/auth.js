@@ -26,6 +26,29 @@ export function* signIn(action) {
   }
 }
 
+export function* signUp(action) {
+  const infs = {
+    name: action.payload.name,
+    email: action.payload.email,
+    password: action.payload.password,
+  };
+  try {
+    const response = yield call(api.post, 'users', infs);
+    localStorage.setItem('@Omni:token', response.data.token);
+
+    yield put(AuthActions.signinSuccess(response.data.token));
+    yield put(push('/'));
+  } catch (err) {
+    yield put(
+      toastrActions.add({
+        type: 'error',
+        title: 'Falha no cadastro',
+        message: 'Você foi convidado para algum time ?',
+      }),
+    );
+  }
+}
+
 export function* signOut() {
   localStorage.removeItem('@Omni:token');
   localStorage.removeItem('@Omni:team');

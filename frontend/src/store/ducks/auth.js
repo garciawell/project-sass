@@ -4,6 +4,7 @@ export const Types = {
   SIGNIN_REQUEST: 'auth/SIGNIN_REQUEST',
   SIGNIN_SUCCESS: 'auth/SIGNIN_SUCCESS',
   SIGNOUT: 'auth/SIGNOUT',
+  SIGN_UP_REQUEST: 'auth/SIGN_UP_REQUEST',
 };
 
 const INITIAL_STATE = Immutable({
@@ -19,6 +20,8 @@ export default function auth(state = INITIAL_STATE, action) {
       return { ...state, signedIn: true, token: action.payload.token };
     case Types.SIGNOUT:
       return { ...state, signedIn: false, token: null };
+    case Types.SIGN_UP_REQUEST:
+      return { ...state };
 
     default:
       return state;
@@ -39,5 +42,9 @@ export const Creators = {
   }),
   signOut: () => ({
     type: Types.SIGNOUT,
+  }),
+  signUpRequest: (name, email, password) => ({
+    type: Types.SIGN_UP_REQUEST,
+    payload: { name, email, password },
   }),
 };
