@@ -6,6 +6,7 @@ export const Types = {
   GET_MEMBERS_REQUEST: 'members/GET_MEMBERS_REQUEST',
   GET_MEMBERS_SUCCESS: 'members/GET_MEMBERS_SUCCESS',
   UPDATE_MEMBER_REQUEST: 'members/UPDATE_MEMBER_REQUEST',
+  INVITE_MEMBER_REQUEST: 'members/INVITE_MEMBER_REQUEST',
 };
 
 const INITIAL_STATE = Immutable({
@@ -28,6 +29,8 @@ export default function members(state = INITIAL_STATE, action) {
         ...state,
         data: state.data.map(member => (member.id === action.payload.id ? { ...member, roles: action.payload.roles } : { member })),
       };
+    case Types.INVITE_MEMBER_REQUEST:
+      return { ...state };
     default:
       return state;
   }
@@ -50,5 +53,9 @@ export const Creators = {
   updateMemberRequest: (id, roles) => ({
     type: Types.UPDATE_MEMBER_REQUEST,
     payload: { id, roles },
+  }),
+  inviteMemberRequest: invite => ({
+    type: Types.INVITE_MEMBER_REQUEST,
+    payload: { invite },
   }),
 };

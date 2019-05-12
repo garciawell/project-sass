@@ -32,3 +32,24 @@ export function* updateMember(action) {
     );
   }
 }
+export function* inviteMember(action) {
+  try {
+    yield call(api.post, 'invites', { invites: [action.payload.invite] });
+
+    yield put(
+      toastrActions.add({
+        type: 'success',
+        title: 'Convite enviado',
+        message: 'Enviamos um convite ao usuário para participar do time.',
+      }),
+    );
+  } catch (err) {
+    yield put(
+      toastrActions.add({
+        type: 'error',
+        title: 'Erro na operação',
+        message: 'Houve um erro, tente novamente!',
+      }),
+    );
+  }
+}

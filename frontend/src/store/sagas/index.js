@@ -10,7 +10,7 @@ import { Types as ProjectsTypes } from '../ducks/projects';
 import { getProjects, createProject } from './projects';
 
 import { Types as MembersTypes } from '../ducks/members';
-import { getMembers, updateMember } from './members';
+import { getMembers, updateMember, inviteMember } from './members';
 
 export default function* rootSaga() {
   yield all([
@@ -26,5 +26,7 @@ export default function* rootSaga() {
 
     takeLatest(MembersTypes.GET_MEMBERS_REQUEST, getMembers),
     takeLatest(MembersTypes.UPDATE_MEMBER_REQUEST, updateMember),
+
+    takeLatest(MembersTypes.INVITE_MEMBER_REQUEST, inviteMember),
   ]);
 }
