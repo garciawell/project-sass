@@ -4,10 +4,13 @@ export const Types = {
   GET_TEAMS_REQUEST: 'teams/GET_TEAMS_REQUEST',
   GET_TEAMS_SUCCESS: 'teams/GET_TEAMS_SUCCESS',
   SELECT_TEAM: 'teams/SELECT_TEAM',
+  OPEN_TEAM_MODAL: 'teams/OPEN_TEAM_MODAL',
+  CLOSE_TEAM_MODAL: 'teams/CLOSE_TEAM_MODAL',
 };
 
 const INITIAL_STATE = Immutable({
   data: [],
+  teamModalOpen: false,
   active: JSON.parse(localStorage.getItem('@Omni:team')) || null,
 });
 
@@ -20,6 +23,10 @@ export default function teams(state = INITIAL_STATE, action) {
     case Types.SELECT_TEAM:
       localStorage.setItem('@Omni:team', JSON.stringify(action.payload.team));
       return { ...state, active: action.payload.team };
+    case Types.OPEN_TEAM_MODAL:
+      return { ...state, teamModalOpen: true };
+    case Types.CLOSE_TEAM_MODAL:
+      return { ...state, teamModalOpen: false };
     default:
       return state;
   }
@@ -36,5 +43,11 @@ export const Creators = {
   selectTeam: team => ({
     type: Types.SELECT_TEAM,
     payload: { team },
+  }),
+  openTeamModal: () => ({
+    type: Types.OPEN_TEAM_MODAL,
+  }),
+  closeTeamModal: () => ({
+    type: Types.CLOSE_TEAM_MODAL,
   }),
 };
