@@ -5,11 +5,14 @@ export const Types = {
   SIGNIN_SUCCESS: 'auth/SIGNIN_SUCCESS',
   SIGNOUT: 'auth/SIGNOUT',
   SIGN_UP_REQUEST: 'auth/SIGN_UP_REQUEST',
+  GET_PERMISSIONS_SUCCESS: 'auth/GET_PERMISSIONS_SUCCESS',
 };
 
 const INITIAL_STATE = Immutable({
   signedIn: !!localStorage.getItem('@Omni:token'),
   token: localStorage.getItem('@Omni:token') || null,
+  roles: [],
+  permissions: [],
 });
 
 export default function auth(state = INITIAL_STATE, action) {
@@ -22,6 +25,12 @@ export default function auth(state = INITIAL_STATE, action) {
       return { ...state, signedIn: false, token: null };
     case Types.SIGN_UP_REQUEST:
       return { ...state };
+    case Types.GET_PERMISSIONS_SUCCESS:
+      return {
+        ...state,
+        roles: [...action.payload.roles],
+        permissions: [...action.payload.permissions],
+      };
 
     default:
       return state;
@@ -46,5 +55,9 @@ export const Creators = {
   signUpRequest: (name, email, password) => ({
     type: Types.SIGN_UP_REQUEST,
     payload: { name, email, password },
+  }),
+  getPermissionsSuccess: (roles, permissions) => ({
+    type: Types.GET_PERMISSIONS_SUCCESS,
+    payload: { roles, permissions },
   }),
 };

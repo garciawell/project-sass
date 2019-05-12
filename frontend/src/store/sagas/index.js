@@ -1,7 +1,9 @@
-import { all, takeLatest } from 'redux-saga/effects';
+import { all, takeLatest, fork } from 'redux-saga/effects';
 
 import { Types as AuthTypes } from '../ducks/auth';
-import { signIn, signOut, signUp } from './auth';
+import {
+  signIn, signOut, signUp, getPermissions,
+} from './auth';
 
 import { Types as TeamsTypes } from '../ducks/teams';
 import { getTeams, createTeam } from './teams';
@@ -14,6 +16,8 @@ import { getMembers, updateMember, inviteMember } from './members';
 
 export default function* rootSaga() {
   yield all([
+    fork(getPermissions),
+
     takeLatest(AuthTypes.SIGNIN_REQUEST, signIn),
     takeLatest(AuthTypes.SIGNOUT, signOut),
 
@@ -22,6 +26,7 @@ export default function* rootSaga() {
     takeLatest(TeamsTypes.GET_TEAMS_REQUEST, getTeams),
     takeLatest(TeamsTypes.CREATE_TEAM_REQUEST, createTeam),
     takeLatest(TeamsTypes.SELECT_TEAM, getProjects),
+    takeLatest(TeamsTypes.SELECT_TEAM, getPermissions),
 
     takeLatest(ProjectsTypes.GET_PROJECTS_REQUEST, getProjects),
     takeLatest(ProjectsTypes.CREATE_PROJECT_REQUEST, createProject),

@@ -8,6 +8,7 @@ import { Creators as ProjectsActions } from '~/store/ducks/projects';
 import { Creators as MembersActions } from '~/store/ducks/members';
 import Modal from '~/components/Modal';
 import Members from '~/components/Members';
+import Can from '~/components/Can';
 
 class Projects extends Component {
   static propTypes = {
@@ -35,7 +36,7 @@ class Projects extends Component {
 
   static defaultProps = {
     activeTeam: null,
-  }
+  };
 
   state = {
     newProject: '',
@@ -81,7 +82,9 @@ class Projects extends Component {
         <header>
           <h1>{activeTeam.name}</h1>
           <div>
-            <Button onClick={openProjectModal}>+ Novo</Button>
+            <Can checkPermission="projects_create">
+              <Button onClick={openProjectModal}>+ Novo</Button>
+            </Can>
             <Button onClick={openMembersModal}>Membros</Button>
           </div>
         </header>
