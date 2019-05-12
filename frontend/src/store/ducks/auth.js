@@ -15,7 +15,6 @@ export default function Auth(state = INITIAL_STATE, action) {
     case Types.SIGNIN_REQUEST:
       return { ...state };
     case Types.SIGNIN_SUCCESS:
-      console.log(action.payload.token);
       return { ...state, signedIn: true, token: action.payload.token };
 
     default:

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import './config/reactotron';
 import { Provider } from 'react-redux';
+import RedyxToastr from 'react-redux-toastr';
 import GlobalStyle from './styles/global';
 
 import { Wrapper } from './styles/components';
@@ -13,6 +14,7 @@ const App = () => (
     <Fragment>
       <Wrapper>
         <Routes />
+        <RedyxToastr />
       </Wrapper>
       <GlobalStyle />
     </Fragment>
