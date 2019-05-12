@@ -8,3 +8,23 @@ export function* getProjects() {
 
   yield put(ProjectsActions.getProjectsSuccess(response.data));
 }
+
+export function* createProject(action) {
+  const inf = {
+    title: action.payload.title,
+  };
+  try {
+    const response = yield call(api.post, 'projects', inf);
+
+    yield put(ProjectsActions.createProjectSuccess(response.data));
+    yield put(ProjectsActions.closeProjectModal());
+  } catch (err) {
+    yield put(
+      toastrActions.add({
+        type: 'error',
+        title: 'Erro na operação',
+        message: 'Houve um erro, tente novamente!',
+      }),
+    );
+  }
+}

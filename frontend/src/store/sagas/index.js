@@ -7,7 +7,7 @@ import { Types as TeamsTypes } from '../ducks/teams';
 import { getTeams, createTeam } from './teams';
 
 import { Types as ProjectsTypes } from '../ducks/projects';
-import { getProjects } from './projects';
+import { getProjects, createProject } from './projects';
 
 export default function* rootSaga() {
   yield all([
@@ -19,5 +19,7 @@ export default function* rootSaga() {
     takeLatest(TeamsTypes.SELECT_TEAM, getProjects),
 
     takeLatest(ProjectsTypes.GET_PROJECTS_REQUEST, getProjects),
+
+    takeLatest(ProjectsTypes.CREATE_PROJECT_REQUEST, createProject),
   ]);
 }
