@@ -9,11 +9,12 @@ import { Container, TeamList, Team } from './styles';
 class TeamSwitcher extends Component {
   static propTypes = {
     getTeamsRequest: PropTypes.func.isRequired,
+    selectTeam: PropTypes.func.isRequired,
     teams: PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          name: PropTypes.string.isRequired,
+          id: PropTypes.number,
+          name: PropTypes.string,
         }),
       ),
     }).isRequired,
@@ -25,13 +26,19 @@ class TeamSwitcher extends Component {
     getTeamsRequest();
   }
 
+  handleTeamSelect = (team) => {
+    const { selectTeam } = this.props;
+
+    selectTeam(team);
+  };
+
   render() {
     const { teams } = this.props;
     return (
       <Container>
         <TeamList>
           {teams.data.map(team => (
-            <Team key={team.id}>
+            <Team key={team.id} onClick={() => this.handleTeamSelect(team)}>
               <img
                 alt={team.name}
                 src={`https://ui-avatars.com/api/?font-size=0.33&background=7159c1&color=fff&name=${

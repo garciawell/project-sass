@@ -3,10 +3,12 @@ import Immutable from 'seamless-immutable';
 export const Types = {
   GET_TEAMS_REQUEST: 'teams/GET_TEAMS_REQUEST',
   GET_TEAMS_SUCCESS: 'teams/GET_TEAMS_SUCCESS',
+  SELECT_TEAM: 'teams/SELECT_TEAM',
 };
 
 const INITIAL_STATE = Immutable({
   data: [],
+  active: JSON.parse(localStorage.getItem('@Omni:team')) || null,
 });
 
 export default function teams(state = INITIAL_STATE, action) {
@@ -15,6 +17,9 @@ export default function teams(state = INITIAL_STATE, action) {
       return { ...state };
     case Types.GET_TEAMS_SUCCESS:
       return { ...state, data: action.payload.data };
+    case Types.SELECT_TEAM:
+      localStorage.setItem('@Omni:team', JSON.stringify(action.payload.team));
+      return { ...state, active: action.payload.team };
     default:
       return state;
   }
@@ -27,5 +32,9 @@ export const Creators = {
   getTeamsSuccess: data => ({
     type: Types.GET_TEAMS_SUCCESS,
     payload: { data },
+  }),
+  selectTeam: team => ({
+    type: Types.SELECT_TEAM,
+    payload: { team },
   }),
 };
