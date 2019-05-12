@@ -6,6 +6,8 @@ export const Types = {
   SELECT_TEAM: 'teams/SELECT_TEAM',
   OPEN_TEAM_MODAL: 'teams/OPEN_TEAM_MODAL',
   CLOSE_TEAM_MODAL: 'teams/CLOSE_TEAM_MODAL',
+  CREATE_TEAM_REQUEST: 'teams/CREATE_TEAM_REQUEST',
+  CREATE_TEAM_SUCCESS: 'teams/CREATE_TEAM_SUCCESS',
 };
 
 const INITIAL_STATE = Immutable({
@@ -27,6 +29,10 @@ export default function teams(state = INITIAL_STATE, action) {
       return { ...state, teamModalOpen: true };
     case Types.CLOSE_TEAM_MODAL:
       return { ...state, teamModalOpen: false };
+    case Types.CREATE_TEAM_REQUEST:
+      return { ...state };
+    case Types.CREATE_TEAM_SUCCESS:
+      return { ...state, data: [...state.data, action.payload.team] };
     default:
       return state;
   }
@@ -49,5 +55,13 @@ export const Creators = {
   }),
   closeTeamModal: () => ({
     type: Types.CLOSE_TEAM_MODAL,
+  }),
+  createTeamRequest: name => ({
+    type: Types.CREATE_TEAM_REQUEST,
+    payload: { name },
+  }),
+  createTeamSuccess: team => ({
+    type: Types.CREATE_TEAM_SUCCESS,
+    payload: { team },
   }),
 };

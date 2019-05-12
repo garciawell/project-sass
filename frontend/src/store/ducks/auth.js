@@ -3,6 +3,7 @@ import Immutable from 'seamless-immutable';
 export const Types = {
   SIGNIN_REQUEST: 'auth/SIGNIN_REQUEST',
   SIGNIN_SUCCESS: 'auth/SIGNIN_SUCCESS',
+  SIGNOUT: 'auth/SIGNOUT',
 };
 
 const INITIAL_STATE = Immutable({
@@ -16,6 +17,8 @@ export default function auth(state = INITIAL_STATE, action) {
       return { ...state };
     case Types.SIGNIN_SUCCESS:
       return { ...state, signedIn: true, token: action.payload.token };
+    case Types.SIGNOUT:
+      return { ...state, signedIn: false, token: null };
 
     default:
       return state;
@@ -33,5 +36,8 @@ export const Creators = {
   signinSuccess: token => ({
     type: Types.SIGNIN_SUCCESS,
     payload: { token },
+  }),
+  signOut: () => ({
+    type: Types.SIGNOUT,
   }),
 };
