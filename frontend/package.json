@@ -38,6 +38,9 @@
     "testMatch": [
       "**/__tests__/**/*.test.js"
     ],
+    "setupFilesAfterEnv": [
+      "@testing-library/react/cleanup-after-each"
+    ],
     "moduleNameMapper": {
       "^~/(.*)": "<rootDir>/src/$1"
     }
