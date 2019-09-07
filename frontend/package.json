@@ -39,7 +39,8 @@
       "**/__tests__/**/*.test.js"
     ],
     "setupFilesAfterEnv": [
-      "@testing-library/react/cleanup-after-each"
+      "@testing-library/react/cleanup-after-each",
+      "@testing-library/jest-dom/extend-expect"
     ],
     "moduleNameMapper": {
       "^~/(.*)": "<rootDir>/src/$1"
