@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +15,12 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
+
+Route.get('/', ({ request, response }) => {
+  return response
+    .status(200)
+    .send({ message: "You're not invited to any team" })
+})
 
 Route.post('sessions', 'SessionController.store').validator('Session')
 Route.post('users', 'UserController.store').validator('User')
