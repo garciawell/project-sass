@@ -34,18 +34,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "jest": {
-    "testMatch": [
-      "**/__tests__/**/*.test.js"
-    ],
-    "setupFilesAfterEnv": [
-      "@testing-library/react/cleanup-after-each",
-      "@testing-library/jest-dom/extend-expect"
-    ],
-    "moduleNameMapper": {
-      "^~/(.*)": "<rootDir>/src/$1"
-    }
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
