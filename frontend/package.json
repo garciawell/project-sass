@@ -5,7 +5,7 @@
   "dependencies": {
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "connected-react-router": "^6.4.0",
     "history": "^4.9.0",
     "prop-types": "^15.7.2",
